@@ -1,122 +1,101 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tu Salud Financiera Empieza Hoy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mejorá tu cobertura médica</title>
   <style>
     body {
-      font-family: 'Helvetica', sans-serif;
-      background-color: #f4fafd;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
       margin: 0;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-
     .container {
-      max-width: 600px;
-      margin: 50px auto;
-      background: white;
+      background-color: rgba(255, 255, 255, 0.95);
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
-
     h1 {
       text-align: center;
-      color: #00a8cc;
+      color: #004e7c;
     }
-
-    .benefits {
-      background-color: #e6f7ff;
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
+    p {
+      text-align: center;
+      color: #333;
     }
-
-    .benefits ul {
-      padding-left: 20px;
-    }
-
     form {
       display: flex;
       flex-direction: column;
     }
-
     input, textarea {
-      padding: 10px;
-      margin-bottom: 15px;
+      padding: 12px;
+      margin-bottom: 12px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 10px;
     }
-
     button {
-      background-color: #00a8cc;
+      background-color: #3498db;
       color: white;
       padding: 12px;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       cursor: pointer;
       font-size: 16px;
     }
-
     button:hover {
-      background-color: #007ea1;
+      background-color: #2980b9;
     }
-
+    label, .checkbox {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #444;
+    }
     .legal {
       font-size: 12px;
       color: #555;
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <h1>Recuperá tu Bienestar Financiero</h1>
-
-    <div class="benefits">
-      <strong>¿Por qué dejar tus datos?</strong>
-      <ul>
-        <li>Asesoramiento personalizado sin costo</li>
-        <li>Soluciones reales para tus deudas</li>
-        <li>Recuperá el control de tu economía</li>
-      </ul>
-    </div>
-
-    <form name="contact-form" method="POST" data-sheet="responses">
-      <input type="text" name="nombre" placeholder="Tu nombre completo" required>
-      <input type="email" name="email" placeholder="Tu correo electrónico" required>
+    <h1>¿Querés mejorar tu cobertura médica?</h1>
+    <p>Completá el formulario y descubrí si podés acceder a un plan de salud privado sin pagar de más.</p>
+    <form id="formulario">
+      <input type="text" name="nombre" placeholder="Nombre completo" required>
+      <input type="number" name="edad" placeholder="Edad" required>
+      <input type="text" name="ciudad" placeholder="Ciudad o provincia" required>
+      <input type="email" name="email" placeholder="Correo electrónico" required>
       <input type="tel" name="telefono" placeholder="Teléfono de contacto" required>
-      <textarea name="mensaje" rows="4" placeholder="Contanos brevemente tu situación..."></textarea>
+      <label>¿Tenés obra social actualmente?</label>
+      <label class="checkbox"><input type="radio" name="obra_social" value="Sí" required> Sí</label>
+      <label class="checkbox"><input type="radio" name="obra_social" value="No"> No</label>
       <label class="legal">
-        <input type="checkbox" required> Acepto que mis datos sean utilizados y compartidos para que asesores se contacten conmigo.
+        <input type="checkbox" required> Acepto ser contactado por asesores de planes médicos y acepto la política de privacidad.
       </label>
-      <button type="submit">Quiero que me contacten</button>
+      <button type="submit">Quiero recibir asesoramiento gratuito</button>
     </form>
   </div>
 
   <script>
-    const form = document.forms['contact-form'];
-    form.addEventListener('submit', e => {
+    document.getElementById('formulario').addEventListener('submit', function(e) {
       e.preventDefault();
-      fetch("TU_URL_DEL_SCRIPT_DE_GOOGLE_APPS", {
-        method: "POST",
-        body: new FormData(form)
+      const formData = new FormData(this);
+      fetch("https://script.google.com/macros/s/AKfycbwp9TrcYNiHEG0bySNK5WKHuxBaphvKGBe9eYOSX4fvZZRc39E9y2duJaodlrcATvDO/exec", {
+        method: 'POST',
+        body: formData
       })
-      .then(response => {
-        alert("¡Gracias! Un asesor se contactará pronto.");
-        form.reset();
-      })
-      .catch(error => {
-        alert("Hubo un error. Por favor intentá de nuevo.");
-        console.error(error);
-      });
+      .then(response => alert("¡Formulario enviado con éxito! Nos contactaremos pronto."))
+      .catch(error => alert("Hubo un error. Por favor intentá nuevamente."));
+      this.reset();
     });
   </script>
-
 </body>
 </html>
-fetch(https://script.google.com/macros/s/AKfycbwp9TrcYNiHEG0bySNK5WKHuxBaphvKGBe9eYOSX4fvZZRc39E9y2duJaodlrcATvDO/exec, {
