@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mejorá tu cobertura médica</title>
+<style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #34495e;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    label, .checkbox {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .legal {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .legal a {
+      color: #3498db;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Modal */
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #modal .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 700px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    #modal button.close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: #c0392b;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+<h1>¿Querés mejorar tu cobertura médica?</h1>
+<p>Completá el formulario y descubrí si podés acceder a un plan de salud privado sin pagar de más.</p>
+<form id="formulario">
+<input name="nombre" placeholder="Nombre completo" required="" type="text"/>
+<input name="edad" placeholder="Edad" required="" type="number"/>
+<input name="ciudad" placeholder="Ciudad o provincia" required="" type="text"/>
+<input name="email" placeholder="Correo electrónico" required="" type="email"/>
+<input name="telefono" placeholder="Teléfono de contacto" required="" type="tel"/>
+<label>¿Tenés obra social actualmente?</label>
+<label class="checkbox"><input name="obra_social" required="" type="radio" value="Sí"/> Sí</label>
+<label class="checkbox"><input name="obra_social" type="radio" value="No"/> No</label>
+<label class="legal">
+<input required="" type="checkbox"/>
+        Acepto ser contactado por asesores de planes médicos y <a onclick="abrirModal()">declaro haber leído y aceptado la política de privacidad</a>.
+      </label>
+<button type="submit">Quiero recibir asesoramiento gratuito</button>
+</form>
+</div>
+<!-- Modal -->
+<div id="modal">
+<div class="modal-content"><button class="close" onclick="cerrarModal()">Cerrar</button>
+<h2>Política de Privacidad</h2>
+<p>En cumplimiento de lo establecido por la Ley N.º 25.326 de Protección de los Datos Personales de la República Argentina y su normativa complementaria, se informa que los datos personales recopilados a través del presente sitio web serán objeto de tratamiento automatizado, conforme los principios de licitud, lealtad, transparencia, adecuación, pertinencia y minimización establecidos en la normativa vigente.</p>
+<h3>1. Responsable del tratamiento</h3>
+<p>El responsable del tratamiento de los datos personales es Nahuel Tiago Alonso, con domicilio en la República Argentina. Toda comunicación relacionada con el ejercicio de derechos vinculados al tratamiento de datos podrá realizarse mediante correo electrónico a la dirección <a href="mailto:nahuelalonso002@gmail.com">nahuelalonso002@gmail.com</a>.</p>
+<h3>2. Finalidad del tratamiento</h3>
+<p>Los datos recabados serán utilizados con fines de segmentación, elaboración de perfiles de usuario, procesamiento comercial y derivación a terceros vinculados al sector de salud, incluyendo sin limitación: prestadores médicos, asesores independientes, empresas de seguros de salud y entidades relacionadas. Asimismo, se podrán utilizar para la realización de estudios de mercado, campañas de marketing y acciones promocionales relacionadas con servicios médicos o complementarios.</p>
+<h3>3. Base legal</h3>
+<p>La base jurídica para el tratamiento de los datos es el consentimiento libre, específico, informado e inequívoco del titular, otorgado mediante la aceptación de esta política en el formulario de contacto. La negativa a otorgar dicho consentimiento implicará la imposibilidad de brindar los servicios ofrecidos.</p>
+<h3>4. Categorías de datos tratados</h3>
+<p>Serán objeto de tratamiento los siguientes datos personales: nombre y apellido, edad, correo electrónico, número telefónico, localidad geográfica, y situación frente a sistemas de cobertura médica. Dichos datos podrán ser cruzados con información de fuentes públicas o privadas para enriquecer el perfilado del usuario.</p>
+<h3>5. Destinatarios y transferencias</h3>
+<p>Los datos podrán ser cedidos, transferidos o compartidos —a título gratuito u oneroso— con terceros, personas humanas o jurídicas, domiciliadas en el país o en el extranjero, siempre que dichos destinatarios se comprometan a cumplir con estándares adecuados de protección de datos. Esta cesión tendrá como fin exclusivo la concreción de actividades compatibles con las finalidades antes detalladas.</p>
+<h3>6. Derechos del titular</h3>
+<p>El titular de los datos podrá ejercer en cualquier momento sus derechos de acceso, rectificación, actualización, supresión y oposición, enviando una solicitud fehaciente al correo electrónico del responsable. El responsable podrá requerir prueba de identidad para validar el ejercicio de tales derechos y contará con un plazo de hasta diez (10) días hábiles para brindar una respuesta formal.</p>
+<h3>7. Conservación y seguridad</h3>
+<p>Los datos serán conservados mientras subsista el consentimiento del titular o mientras resulten necesarios para el cumplimiento de las finalidades expuestas. El responsable se compromete a aplicar medidas técnicas y organizativas apropiadas para garantizar un nivel de seguridad adecuado al riesgo, sin perjuicio de lo cual no se responsabiliza por eventuales vulneraciones resultantes de accesos no autorizados derivados de acciones de terceros ajenos a su control razonable.</p>
+<h3>8. Modificaciones</h3>
+<p>El presente documento podrá ser modificado unilateralmente por el responsable en cualquier momento. Cualquier modificación será notificada mediante la publicación de la versión actualizada en el presente sitio web, y su utilización posterior implicará la aceptación tácita de las nuevas condiciones.</p>
+<p>Última actualización: mayo 2025</p>
+</div>
+</div>
+<script>
+    function abrirModal() {
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    document.getElementById('formulario').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch("https://script.google.com/macros/s/AKfycbwp9TrcYNiHEG0bySNK5WKHuxBaphvKGBe9eYOSX4fvZZRc39E9y2duJaodlrcATvDO/exec", {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => alert("¡Formulario enviado con éxito! Nos contactaremos pronto."))
+      .catch(error => alert("Hubo un error. Por favor intentá nuevamente."));
+      this.reset();
+    });
+  </script>
+</body>
+</html>
